@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login — Garona AI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --text: #171717;
+    --muted: #737373;
+    --border: #e5e5e5;
+    --input: #fafafa;
+    --hover: #f5f5f5;
+    --accent: #111111;
+}
+
+body.dark {
+    --bg: #171717;
+    --card: #202020;
+    --text: #ffffff;
+    --muted: #a3a3a3;
+    --border: #383838;
+    --input: #292929;
+    --hover: #303030;
+    --accent: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Arial, sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s;
+}
+
+/* TOP BAR */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+    color: var(--bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.theme-button {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.theme-button:hover {
+    background: var(--hover);
+}
+
+/* LOGIN CARD */
+
+.login-container {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 25px;
+}
+
+.login-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 38px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+
+.login-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.big-logo {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 17px;
+
+    background: var(--accent);
+    color: var(--bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.login-header h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* SOCIAL BUTTONS */
+
+.social-button {
+    width: 100%;
+
+    height: 46px;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+    color: var(--text);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.social-button:hover {
+    background: var(--hover);
+}
+
+.social-icon {
+    font-size: 17px;
+}
+
+/* DIVIDER */
+
+.divider {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 22px 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+/* FORM */
+
+label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input {
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 44px 0 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--input);
+
+    color: var(--text);
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--text);
+}
+
+input::placeholder {
+    color: var(--muted);
+}
+
+.password-toggle {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+/* OPTIONS */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    font-size: 12px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+}
+
+.remember input {
+    width: auto;
+    height: auto;
+}
+
+.forgot {
+    color: var(--text);
+
+    text-decoration: none;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+
+    height: 47px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+    color: var(--bg);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    opacity: 0.85;
+}
+
+/* SIGN UP */
+
+.signup {
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.signup a {
+    color: var(--text);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+
+.footer {
+    position: fixed;
+
+    bottom: 18px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 18px;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+    .topbar {
+        padding: 0 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <div class="brand">
+
+        <div class="logo">
+            G
+        </div>
+
+        <span>
+            Garona AI
+        </span>
+
+    </div>
+
+    <button
+        class="theme-button"
+        onclick="toggleTheme()"
+        id="themeButton">
+
+        🌙
+
+    </button>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <div class="login-header">
+
+            <div class="big-logo">
+                G
+            </div>
+
+            <h1>
+                Welcome to Garona AI
+            </h1>
+
+            <p>
+                Your personal AI tutor for learning.
+            </p>
+
+        </div>
+
+
+        <!-- GOOGLE -->
+
+        <button
+            class="social-button"
+            onclick="socialLogin('Google')">
+
+            <span class="social-icon">
+                G
+            </span>
+
+            Continue with Google
+
+        </button>
+
+
+        <!-- FACEBOOK -->
+
+        <button
+            class="social-button"
+            onclick="socialLogin('Facebook')">
+
+            <span class="social-icon">
+                f
+            </span>
+
+            Continue with Facebook
+
+        </button>
+
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+            OR
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="input-group">
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email">
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="input-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <div class="input-wrapper">
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password">
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword()"
+                    id="passwordButton">
+
+                    👁
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- OPTIONS -->
+
+        <div class="login-options">
+
+            <label class="remember">
+
+                <input
+                    type="checkbox"
+                    id="remember">
+
+                Remember me
+
+            </label>
+
+
+            <a
+                href="#"
+                class="forgot"
+                onclick="forgotPassword()">
+
+                Forgot password?
+
+            </a>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <button
+            class="login-button"
+            onclick="login()">
+
+            Login
+
+        </button>
+
+
+        <!-- SIGN UP -->
+
+        <div class="signup">
+
+            Don't have an account?
+
+            <a
+                href="#"
+                onclick="signup()">
+
+                Create account
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+    © 2026 Garona AI
+</div>
+
+
+<script>
+
+/* =========================
+   LOGIN
+========================= */
+
+function login() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+
+    if (!email) {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+
+    if (!password) {
+
+        alert("Please enter your password.");
+
+        return;
+
+    }
+
+
+    /*
+       TEMPORARY LOGIN
+
+       This currently sends the user
+       directly to Garona AI.
+
+       Real authentication will be
+       connected later.
+    */
+
+    window.location.href = "/chat";
+
+}
+
+
+/* =========================
+   GOOGLE / FACEBOOK
+========================= */
+
+function socialLogin(provider) {
+
+    alert(
+        provider +
+        " login will be connected later."
+    );
+
+}
+
+
+/* =========================
+   SIGN UP
+========================= */
+
+function signup() {
+
+    alert(
+        "Account creation will be added soon."
+    );
+
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword() {
+
+    alert(
+        "Password recovery will be added soon."
+    );
+
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.getElementById("passwordButton");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        button.textContent = "🙈";
+
+    }
+
+    else {
+
+        password.type = "password";
+
+        button.textContent = "👁";
+
+    }
+
+}
+
+
+/* =========================
+   THEME
+========================= */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+
+    const dark =
+        document.body.classList.contains("dark");
+
+
+    localStorage.setItem(
+        "garonaLoginTheme",
+        dark ? "dark" : "light"
+    );
+
+
+    document.getElementById(
+        "themeButton"
+    ).textContent =
+        dark ? "☀️" : "🌙";
+
+}
+
+
+/* =========================
+   LOAD THEME
+========================= */
+
+const savedTheme =
+    localStorage.getItem(
+        "garonaLoginTheme"
+    );
+
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
+    document.getElementById(
+        "themeButton"
+    ).textContent = "☀️";
+
+}
+
+</script>
+
+</body>
+</html>

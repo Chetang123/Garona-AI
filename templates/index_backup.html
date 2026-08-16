@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Garo Tutor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        header p {
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .chat-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 450px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        #messages {
+            min-height: 350px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            max-width: 85%;
+            line-height: 1.5;
+        }
+
+        .user {
+            background: #2563eb;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot {
+            background: #e9eef7;
+            color: #222;
+            margin-right: auto;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        #question {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 15px auto;
+            }
+
+            .chat-box {
+                padding: 12px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Garo Tutor</h1>
+    <p>Learn Physics, Mathematics and more in Garo</p>
+</header>
+
+<div class="container">
+
+    <div class="chat-box">
+
+        <div id="messages">
+            <div class="message bot">
+                Hi anga chetangku.<br>
+                English chiba garochiba singaibo aganchakaigen.
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Ask your question..."
+                autocomplete="off"
+            >
+
+            <button onclick="askQuestion()">Ask</button>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Garo Tutor</p>
+</footer>
+
+
+<script>
+
+async function askQuestion() {
+
+    const input = document.getElementById("question");
+    const question = input.value.trim();
+
+    if (question === "") {
+        return;
+    }
+
+    const messages = document.getElementById("messages");
+
+    // Show user's question
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.textContent = question;
+
+    messages.appendChild(userMessage);
+
+    input.value = "";
+
+    // Show loading message
+    const loading = document.createElement("div");
+    loading.className = "message bot";
+    loading.textContent = "Thinking...";
+    messages.appendChild(loading);
+
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+
+        const response = await fetch("/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question
+            })
+        });
+
+        const data = await response.json();
+
+        loading.remove();
+
+        // Show AI answer
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot";
+
+        botMessage.textContent = data.answer || "Sorry, I couldn't understand.";
+
+        messages.appendChild(botMessage);
+
+    } catch (error) {
+
+        loading.textContent =
+            "Sorry, something went wrong. Please try again.";
+
+        console.error(error);
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+}
+
+
+// Press Enter to ask
+document.getElementById("question").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        askQuestion();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

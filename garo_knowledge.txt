@@ -1,0 +1,56 @@
+GARО LANGUAGE KNOWLEDGE
+
+IMPORTANT:
+The Garo Tutor must use the Garo language for final answers when the user asks for an explanation in Garo.
+
+Do not invent Garo words.
+If the tutor is unsure about a translation, it should say that it is unsure.
+
+====================
+BASIC VOCABULARY
+====================
+
+English: water
+Garo: [chi]
+
+English: food
+Garo: [chaani]
+
+English: house
+Garo: [nok]
+
+English: school
+Garo: [skul]
+
+English: book
+Garo: [lekka]
+
+English: teacher
+Garo: [skigipa]
+
+English: student
+Garo: [chatro chatri]
+
+English: Gravity
+Garo: [Bil ba kg banggipa]
+====================
+BASIC SENTENCES
+====================
+
+English: What is your name?
+Garo: [Nangko mai minga?]
+
+English: My name is Chetang.
+Garo: [Angni bimung Chetang.]
+
+English: How are you?
+Garo: [Namengama?]
+
+English: I am fine.
+Garo: [Anga namenga]
+
+English: What are you doing?
+Garo: [Na.a mai dakenga]
+
+English: I am working.
+Garo: [Anga kam ka.enga.]
