@@ -18,7 +18,6 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-
     background: #020203;
     color: white;
 
@@ -36,22 +35,19 @@ body {
 ===================================================== */
 
 .room {
-
     position: relative;
-
     width: 100%;
     height: 100vh;
-
     background: #020203;
-
     overflow: hidden;
 
-    transition:
-        background 1.2s ease;
+    transition: background 1.2s ease;
 }
 
 
-/* LIGHT AFTER PULL */
+/* =====================================================
+   LIGHT AFTER PULL
+===================================================== */
 
 .room.light-on {
 
@@ -78,19 +74,15 @@ body {
 ===================================================== */
 
 .lamp {
-
     position: absolute;
 
     left: 15%;
-
     top: 22%;
 
     width: 180px;
-
     height: 400px;
 
-    transition:
-        transform 1s ease;
+    transition: transform 1s ease;
 }
 
 
@@ -103,31 +95,25 @@ body {
     position: absolute;
 
     top: 0;
-
     left: 20px;
 
     width: 100px;
-
     height: 38px;
 
     border-radius:
         55px 55px 12px 12px;
 
     background:
-
         linear-gradient(
             #29292e,
             #101014
         );
 
-    border:
-        1px solid #35353b;
+    border: 1px solid #35353b;
 
     z-index: 5;
 }
 
-
-/* shade bottom */
 
 .shade::after {
 
@@ -136,11 +122,9 @@ body {
     position: absolute;
 
     bottom: -4px;
-
     left: 8px;
 
     width: 84px;
-
     height: 8px;
 
     border-radius: 50%;
@@ -158,11 +142,9 @@ body {
     position: absolute;
 
     top: 32px;
-
     left: 68px;
 
     width: 20px;
-
     height: 20px;
 
     border-radius: 50%;
@@ -172,14 +154,10 @@ body {
     border: 2px solid #4b302b;
 
     transition:
-
         background .8s ease,
-
         box-shadow .8s ease;
 }
 
-
-/* BULB ON */
 
 .room.light-on .bulb {
 
@@ -190,11 +168,8 @@ body {
     box-shadow:
 
         0 0 10px #ffd16a,
-
         0 0 30px #ffb84d,
-
         0 0 70px rgba(255,170,55,.9),
-
         0 0 130px rgba(255,160,40,.5);
 }
 
@@ -208,15 +183,12 @@ body {
     position: absolute;
 
     top: 35px;
-
     left: 77px;
 
     width: 3px;
-
     height: 275px;
 
     background:
-
         linear-gradient(
             #242429,
             #111114
@@ -233,11 +205,9 @@ body {
     position: absolute;
 
     left: 45px;
-
     bottom: 40px;
 
     width: 68px;
-
     height: 10px;
 
     border-radius: 50%;
@@ -258,11 +228,9 @@ body {
     position: absolute;
 
     top: 38px;
-
     left: 78px;
 
     width: 10px;
-
     height: 10px;
 
     opacity: 0;
@@ -274,14 +242,11 @@ body {
 }
 
 
-/* triangle light */
-
 .room.light-on .light-cone {
 
     opacity: 1;
 
     width: 250px;
-
     height: 300px;
 
     left: -45px;
@@ -305,7 +270,6 @@ body {
         );
 
     filter: blur(8px);
-
 }
 
 
@@ -318,11 +282,9 @@ body {
     position: absolute;
 
     top: 48px;
-
     left: 77px;
 
     width: 60px;
-
     height: 180px;
 
     z-index: 20;
@@ -336,11 +298,9 @@ body {
     position: absolute;
 
     top: 0;
-
     left: 28px;
 
     width: 2px;
-
     height: 70px;
 
     background: #84786b;
@@ -358,18 +318,14 @@ body {
     position: absolute;
 
     top: 64px;
-
     left: 17px;
 
     width: 24px;
-
     height: 24px;
 
     border-radius: 50%;
 
-    border:
-
-        4px solid #a75e43;
+    border: 4px solid #a75e43;
 
     background: #111;
 
@@ -383,12 +339,9 @@ body {
 
 
 .rope-handle:active {
-
     cursor: grabbing;
 }
 
-
-/* little white/yellow end */
 
 .rope-handle::after {
 
@@ -397,7 +350,6 @@ body {
     position: absolute;
 
     width: 5px;
-
     height: 5px;
 
     background: #ffe7a7;
@@ -405,7 +357,6 @@ body {
     border-radius: 50%;
 
     left: 50%;
-
     bottom: -7px;
 
     transform:
@@ -422,7 +373,6 @@ body {
     position: absolute;
 
     top: 50%;
-
     right: 9%;
 
     width: 380px;
@@ -432,26 +382,19 @@ body {
     border-radius: 20px;
 
     background:
-
         rgba(30,29,25,.88);
 
     border:
-
-        1px solid
-        rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.12);
 
     box-shadow:
 
-        0 30px 80px
-        rgba(0,0,0,.6),
+        0 30px 80px rgba(0,0,0,.6),
 
-        0 0 50px
-        rgba(255,180,70,.08);
+        0 0 50px rgba(255,180,70,.08);
 
     backdrop-filter:
         blur(18px);
-
-    /* HIDDEN */
 
     opacity: 0;
 
@@ -472,7 +415,7 @@ body {
 
 
 /* =====================================================
-   SHOW LOGIN AFTER PULL
+   SHOW LOGIN
 ===================================================== */
 
 .room.login-visible .login-card {
@@ -526,8 +469,7 @@ body {
 
     border-radius: 10px;
 
-    border:
-        1px solid #38372f;
+    border: 1px solid #38372f;
 
     background:
         rgba(10,10,8,.7);
@@ -538,10 +480,13 @@ body {
 }
 
 
-.input:focus {
+.input::placeholder {
+    color: #777;
+}
 
-    border-color:
-        #d6a94d;
+
+.input:focus {
+    border-color: #d6a94d;
 }
 
 
@@ -559,8 +504,7 @@ body {
 
     border-radius: 10px;
 
-    background:
-        #ffc400;
+    background: #ffc400;
 
     color: #17120a;
 
@@ -569,13 +513,74 @@ body {
     cursor: pointer;
 
     margin-top: 4px;
+
+    transition: .2s ease;
 }
 
 
 .sign-in:hover {
+    background: #ffd02f;
+}
 
-    background:
-        #ffd02f;
+
+.sign-in:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+
+    min-height: 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 12px;
+
+    color: #ffb4a8;
+}
+
+
+/* =====================================================
+   SWITCH LOGIN / SIGNUP
+===================================================== */
+
+.switch {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 13px;
+
+    color: #888;
+}
+
+
+.switch button {
+
+    border: none;
+
+    background: none;
+
+    color: #ffc400;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.switch button:hover {
+    text-decoration: underline;
 }
 
 
@@ -628,8 +633,7 @@ body {
 
     border-radius: 9px;
 
-    border:
-        1px solid #444;
+    border: 1px solid #444;
 
     background:
         rgba(255,255,255,.06);
@@ -705,8 +709,7 @@ body {
     }
 
 
-    .room.login-visible
-    .login-card {
+    .room.login-visible .login-card {
 
         transform:
 
@@ -724,9 +727,7 @@ body {
 <body>
 
 
-<div
-    class="room"
-    id="room">
+<div class="room" id="room">
 
 
     <!-- =================================================
@@ -735,18 +736,13 @@ body {
 
     <div class="lamp">
 
-
         <div class="shade"></div>
-
 
         <div class="bulb"></div>
 
-
         <div class="light-cone"></div>
 
-
         <div class="stand"></div>
-
 
         <div class="base"></div>
 
@@ -757,28 +753,24 @@ body {
             class="rope-area"
             id="ropeArea">
 
-
             <div
                 class="rope"
                 id="rope">
             </div>
 
-
             <button
+                type="button"
                 class="rope-handle"
                 id="ropeHandle">
             </button>
 
-
         </div>
-
 
     </div>
 
 
-
     <!-- =================================================
-         LOGIN
+         LOGIN CARD
     ================================================== -->
 
     <div
@@ -786,41 +778,92 @@ body {
         id="loginCard">
 
 
-        <h1>
+        <h1 id="formTitle">
             Welcome Back
         </h1>
 
 
-        <p class="subtitle">
+        <p
+            class="subtitle"
+            id="formSubtitle">
+
             Enter your details to access your account
+
         </p>
 
 
+        <!-- USERNAME -->
+
         <input
             class="input"
+            id="username"
             type="text"
-            placeholder="Username">
+            placeholder="Username"
+            autocomplete="username"
+        >
 
+
+        <!-- EMAIL -->
 
         <input
             class="input"
+            id="email"
             type="email"
-            placeholder="Email Address">
+            placeholder="Email Address"
+            autocomplete="email"
+        >
 
+
+        <!-- PASSWORD -->
 
         <input
             class="input"
+            id="password"
             type="password"
-            placeholder="Password">
+            placeholder="Password"
+            autocomplete="current-password"
+        >
 
+
+        <!-- SIGN IN -->
 
         <button
+            type="button"
             class="sign-in"
+            id="submitButton"
             onclick="login()">
 
             Sign In
 
         </button>
+
+
+        <!-- ERROR / SUCCESS MESSAGE -->
+
+        <div
+            class="message"
+            id="message">
+        </div>
+
+
+        <!-- SWITCH -->
+
+        <div class="switch">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <button
+                type="button"
+                onclick="toggleSignup()"
+                id="switchButton">
+
+                Create Account
+
+            </button>
+
+        </div>
 
 
         <div class="or">
@@ -831,6 +874,7 @@ body {
         <div class="social">
 
             <button
+                type="button"
                 onclick="socialLogin('Google')">
 
                 🔵 Google
@@ -839,6 +883,7 @@ body {
 
 
             <button
+                type="button"
                 onclick="socialLogin('GitHub')">
 
                 ● GitHub
@@ -852,7 +897,6 @@ body {
 
 
 </div>
-
 
 
 <script>
@@ -871,6 +915,33 @@ const rope =
 const handle =
     document.getElementById("ropeHandle");
 
+const usernameInput =
+    document.getElementById("username");
+
+const emailInput =
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("password");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const message =
+    document.getElementById("message");
+
+const formTitle =
+    document.getElementById("formTitle");
+
+const formSubtitle =
+    document.getElementById("formSubtitle");
+
+const switchText =
+    document.getElementById("switchText");
+
+const switchButton =
+    document.getElementById("switchButton");
+
 
 /* =====================================================
    VARIABLES
@@ -884,6 +955,8 @@ let pullDistance = 0;
 
 let activated = false;
 
+let signupMode = false;
+
 
 /* =====================================================
    START PULL
@@ -896,11 +969,9 @@ handle.addEventListener(
         if (activated)
             return;
 
-
         dragging = true;
 
-        startY =
-            e.clientY;
+        startY = e.clientY;
 
         handle.setPointerCapture(
             e.pointerId
@@ -924,35 +995,21 @@ window.addEventListener(
         )
             return;
 
-
         pullDistance =
             e.clientY - startY;
 
 
-        if (
-            pullDistance < 0
-        )
+        if (pullDistance < 0)
             pullDistance = 0;
 
 
-        if (
-            pullDistance > 70
-        )
+        if (pullDistance > 70)
             pullDistance = 70;
 
 
-        /*
-           Stretch rope
-        */
-
         rope.style.height =
-            (70 + pullDistance)
-            + "px";
+            (70 + pullDistance) + "px";
 
-
-        /*
-           Move handle
-        */
 
         handle.style.transform =
             "translateY(" +
@@ -960,14 +1017,7 @@ window.addEventListener(
             "px)";
 
 
-        /*
-           Trigger after
-           sufficient pull
-        */
-
-        if (
-            pullDistance >= 45
-        ) {
+        if (pullDistance >= 45) {
 
             activateLamp();
 
@@ -991,21 +1041,16 @@ window.addEventListener(
         )
             return;
 
-
         dragging = false;
-
 
         rope.style.transition =
             "height .35s ease";
 
-
         handle.style.transition =
             "transform .35s ease";
 
-
         rope.style.height =
             "70px";
-
 
         handle.style.transform =
             "translateY(0)";
@@ -1014,11 +1059,9 @@ window.addEventListener(
         setTimeout(
             () => {
 
-                rope.style.transition =
-                    "";
+                rope.style.transition = "";
 
-                handle.style.transition =
-                    "";
+                handle.style.transition = "";
 
             },
             400
@@ -1037,25 +1080,15 @@ function activateLamp() {
     if (activated)
         return;
 
-
     activated = true;
 
     dragging = false;
 
 
-    /*
-       Lamp turns ON
-    */
-
     room.classList.add(
         "light-on"
     );
 
-
-    /*
-       Login appears
-       AFTER lamp lights
-    */
 
     setTimeout(
         function() {
@@ -1069,21 +1102,14 @@ function activateLamp() {
     );
 
 
-    /*
-       Return rope
-    */
-
     rope.style.transition =
         "height .4s ease";
-
 
     handle.style.transition =
         "transform .4s ease";
 
-
     rope.style.height =
         "70px";
-
 
     handle.style.transform =
         "translateY(0)";
@@ -1092,22 +1118,309 @@ function activateLamp() {
 
 
 /* =====================================================
-   LOGIN
+   LOGIN / SIGNUP TOGGLE
 ===================================================== */
 
-function login() {
+function toggleSignup() {
 
-    alert(
-        "Connect your Garona AI authentication here."
-    );
+    signupMode = !signupMode;
 
-    /*
-       If your existing backend uses:
+    message.textContent = "";
 
-       window.location.href = "/chat";
+    passwordInput.value = "";
 
-       you can put it here.
-    */
+    if (signupMode) {
+
+        formTitle.textContent =
+            "Create Account";
+
+        formSubtitle.textContent =
+            "Create your Garona AI account";
+
+        submitButton.textContent =
+            "Create Account";
+
+        submitButton.onclick =
+            signup;
+
+        switchText.textContent =
+            "Already have an account?";
+
+        switchButton.textContent =
+            "Sign In";
+
+        passwordInput.autocomplete =
+            "new-password";
+
+    } else {
+
+        formTitle.textContent =
+            "Welcome Back";
+
+        formSubtitle.textContent =
+            "Enter your details to access your account";
+
+        submitButton.textContent =
+            "Sign In";
+
+        submitButton.onclick =
+            login;
+
+        switchText.textContent =
+            "Don't have an account?";
+
+        switchButton.textContent =
+            "Create Account";
+
+        passwordInput.autocomplete =
+            "current-password";
+    }
+
+}
+
+
+/* =====================================================
+   SIGN IN
+===================================================== */
+
+async function login() {
+
+    const email =
+        emailInput.value.trim();
+
+    const password =
+        passwordInput.value;
+
+
+    message.textContent = "";
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Please enter your email and password.";
+
+        return;
+    }
+
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "Signing In...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            message.style.color =
+                "#9cffb0";
+
+            message.textContent =
+                "Login successful...";
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        data.redirect || "/chat";
+
+                },
+                400
+            );
+
+        } else {
+
+            message.style.color =
+                "#ffb4a8";
+
+            message.textContent =
+                data.message ||
+                "Invalid email or password.";
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Sign In";
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.style.color =
+            "#ffb4a8";
+
+        message.textContent =
+            "Could not connect to Garona AI.";
+
+        submitButton.disabled =
+            false;
+
+        submitButton.textContent =
+            "Sign In";
+    }
+
+}
+
+
+/* =====================================================
+   SIGN UP
+===================================================== */
+
+async function signup() {
+
+    const username =
+        usernameInput.value.trim();
+
+    const email =
+        emailInput.value.trim();
+
+    const password =
+        passwordInput.value;
+
+
+    message.textContent = "";
+
+
+    if (!username || !email || !password) {
+
+        message.textContent =
+            "Please fill in all fields.";
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+    }
+
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "Creating Account...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/signup",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            username:
+                                username,
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            message.style.color =
+                "#9cffb0";
+
+            message.textContent =
+                "Account created...";
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        data.redirect || "/chat";
+
+                },
+                500
+            );
+
+
+        } else {
+
+            message.style.color =
+                "#ffb4a8";
+
+            message.textContent =
+                data.message ||
+                "Could not create account.";
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Create Account";
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.style.color =
+            "#ffb4a8";
+
+        message.textContent =
+            "Could not connect to Garona AI.";
+
+        submitButton.disabled =
+            false;
+
+        submitButton.textContent =
+            "Create Account";
+    }
 
 }
 
@@ -1118,10 +1431,12 @@ function login() {
 
 function socialLogin(provider) {
 
-    alert(
+    message.style.color =
+        "#ffc400";
+
+    message.textContent =
         provider +
-        " login will be connected later."
-    );
+        " login is not connected yet.";
 
 }
 
