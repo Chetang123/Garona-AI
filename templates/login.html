@@ -4,675 +4,1117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login — Garona AI</title>
+<title>Garona AI — Lamp Login</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --bg: #ffffff;
-    --card: #ffffff;
-    --text: #171717;
-    --muted: #737373;
-    --border: #e5e5e5;
-    --input: #fafafa;
-    --hover: #f5f5f5;
-    --accent: #111111;
-}
-
-body.dark {
-    --bg: #171717;
-    --card: #202020;
-    --text: #ffffff;
-    --muted: #a3a3a3;
-    --border: #383838;
-    --input: #292929;
-    --hover: #303030;
-    --accent: #ffffff;
-}
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Roboto, Arial, sans-serif;
-
-    background: var(--bg);
-    color: var(--text);
-
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: 0.25s;
-}
-
-/* TOP BAR */
-
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 64px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 24px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.logo {
-    width: 34px;
-    height: 34px;
-
-    border-radius: 10px;
-
-    background: var(--accent);
-    color: var(--bg);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 17px;
-    font-weight: 800;
-}
-
-.theme-button {
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.theme-button:hover {
-    background: var(--hover);
-}
-
-/* LOGIN CARD */
-
-.login-container {
     width: 100%;
-    max-width: 430px;
+    height: 100vh;
+    overflow: hidden;
 
-    padding: 25px;
+    background: #020203;
+    color: white;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 }
 
-.login-card {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+/* =====================================================
+   ROOM
+===================================================== */
 
-    border-radius: 18px;
+.room {
 
-    padding: 38px;
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #020203;
+
+    overflow: hidden;
+
+    transition:
+        background 1.2s ease;
+}
+
+
+/* LIGHT AFTER PULL */
+
+.room.light-on {
+
+    background:
+
+        radial-gradient(
+            ellipse at 30% 45%,
+            rgba(255, 190, 75, .20),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(255, 170, 50, .08),
+            transparent 60%
+        ),
+
+        #080706;
+}
+
+
+/* =====================================================
+   LAMP
+===================================================== */
+
+.lamp {
+
+    position: absolute;
+
+    left: 15%;
+
+    top: 22%;
+
+    width: 180px;
+
+    height: 400px;
+
+    transition:
+        transform 1s ease;
+}
+
+
+/* =====================================================
+   LAMP SHADE
+===================================================== */
+
+.shade {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 20px;
+
+    width: 100px;
+
+    height: 38px;
+
+    border-radius:
+        55px 55px 12px 12px;
+
+    background:
+
+        linear-gradient(
+            #29292e,
+            #101014
+        );
+
+    border:
+        1px solid #35353b;
+
+    z-index: 5;
+}
+
+
+/* shade bottom */
+
+.shade::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -4px;
+
+    left: 8px;
+
+    width: 84px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #080809;
+}
+
+
+/* =====================================================
+   BULB
+===================================================== */
+
+.bulb {
+
+    position: absolute;
+
+    top: 32px;
+
+    left: 68px;
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #111114;
+
+    border: 2px solid #4b302b;
+
+    transition:
+
+        background .8s ease,
+
+        box-shadow .8s ease;
+}
+
+
+/* BULB ON */
+
+.room.light-on .bulb {
+
+    background: #ffe29a;
+
+    border-color: #ffbd5b;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,0.08);
+
+        0 0 10px #ffd16a,
+
+        0 0 30px #ffb84d,
+
+        0 0 70px rgba(255,170,55,.9),
+
+        0 0 130px rgba(255,160,40,.5);
 }
 
-/* HEADER */
 
-.login-header {
+/* =====================================================
+   LAMP STAND
+===================================================== */
+
+.stand {
+
+    position: absolute;
+
+    top: 35px;
+
+    left: 77px;
+
+    width: 3px;
+
+    height: 275px;
+
+    background:
+
+        linear-gradient(
+            #242429,
+            #111114
+        );
+}
+
+
+/* =====================================================
+   LAMP BASE
+===================================================== */
+
+.base {
+
+    position: absolute;
+
+    left: 45px;
+
+    bottom: 40px;
+
+    width: 68px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #17171b;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.8);
+}
+
+
+/* =====================================================
+   LIGHT CONE
+===================================================== */
+
+.light-cone {
+
+    position: absolute;
+
+    top: 38px;
+
+    left: 78px;
+
+    width: 10px;
+
+    height: 10px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease;
+}
+
+
+/* triangle light */
+
+.room.light-on .light-cone {
+
+    opacity: 1;
+
+    width: 250px;
+
+    height: 300px;
+
+    left: -45px;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(255,205,110,.25),
+            rgba(255,180,70,.08),
+            transparent
+        );
+
+    clip-path:
+
+        polygon(
+            48% 0,
+            52% 0,
+            100% 100%,
+            0 100%
+        );
+
+    filter: blur(8px);
+
+}
+
+
+/* =====================================================
+   ROPE
+===================================================== */
+
+.rope-area {
+
+    position: absolute;
+
+    top: 48px;
+
+    left: 77px;
+
+    width: 60px;
+
+    height: 180px;
+
+    z-index: 20;
+
+    touch-action: none;
+}
+
+
+.rope {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 28px;
+
+    width: 2px;
+
+    height: 70px;
+
+    background: #84786b;
+
+    transform-origin: top;
+}
+
+
+/* =====================================================
+   ROPE HANDLE
+===================================================== */
+
+.rope-handle {
+
+    position: absolute;
+
+    top: 64px;
+
+    left: 17px;
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    border:
+
+        4px solid #a75e43;
+
+    background: #111;
+
+    cursor: grab;
+
+    z-index: 30;
+
+    box-shadow:
+        0 0 10px rgba(200,100,60,.3);
+}
+
+
+.rope-handle:active {
+
+    cursor: grabbing;
+}
+
+
+/* little white/yellow end */
+
+.rope-handle::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 5px;
+
+    background: #ffe7a7;
+
+    border-radius: 50%;
+
+    left: 50%;
+
+    bottom: -7px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 9%;
+
+    width: 380px;
+
+    padding: 32px;
+
+    border-radius: 20px;
+
+    background:
+
+        rgba(30,29,25,.88);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,.6),
+
+        0 0 50px
+        rgba(255,180,70,.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    /* HIDDEN */
+
+    opacity: 0;
+
+    transform:
+        translateY(-50%)
+        translateX(100px)
+        scale(.92);
+
+    pointer-events: none;
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =====================================================
+   SHOW LOGIN AFTER PULL
+===================================================== */
+
+.room.login-visible .login-card {
+
+    opacity: 1;
+
+    transform:
+        translateY(-50%)
+        translateX(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+/* =====================================================
+   LOGIN CONTENT
+===================================================== */
+
+.login-card h1 {
+
     text-align: center;
 
-    margin-bottom: 30px;
-}
+    font-size: 30px;
 
-.big-logo {
-    width: 58px;
-    height: 58px;
-
-    margin: 0 auto 18px;
-
-    border-radius: 17px;
-
-    background: var(--accent);
-    color: var(--bg);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 28px;
-    font-weight: 800;
-}
-
-.login-header h1 {
-    font-size: 26px;
     margin-bottom: 8px;
 }
 
-.login-header p {
-    color: var(--muted);
-    font-size: 14px;
+
+.subtitle {
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
 }
 
-/* SOCIAL BUTTONS */
 
-.social-button {
+.input {
+
     width: 100%;
 
-    height: 46px;
+    height: 45px;
 
-    border: 1px solid var(--border);
+    margin-bottom: 14px;
 
-    background: var(--card);
-    color: var(--text);
+    padding: 0 14px;
 
     border-radius: 10px;
 
+    border:
+        1px solid #38372f;
+
+    background:
+        rgba(10,10,8,.7);
+
+    color: white;
+
+    outline: none;
+}
+
+
+.input:focus {
+
+    border-color:
+        #d6a94d;
+}
+
+
+/* =====================================================
+   SIGN IN
+===================================================== */
+
+.sign-in {
+
+    width: 100%;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        #ffc400;
+
+    color: #17120a;
+
+    font-weight: 700;
+
     cursor: pointer;
 
-    font-size: 14px;
-    font-weight: 500;
+    margin-top: 4px;
+}
 
-    margin-bottom: 10px;
+
+.sign-in:hover {
+
+    background:
+        #ffd02f;
+}
+
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+.or {
 
     display: flex;
+
     align-items: center;
-    justify-content: center;
 
     gap: 10px;
-}
 
-.social-button:hover {
-    background: var(--hover);
-}
+    color: #888;
 
-.social-icon {
-    font-size: 17px;
-}
-
-/* DIVIDER */
-
-.divider {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
+    font-size: 11px;
 
     margin: 22px 0;
-
-    color: var(--muted);
-
-    font-size: 12px;
 }
 
-.divider::before,
-.divider::after {
-    content: "";
 
-    flex: 1;
+.or::before,
+.or::after {
+
+    content: "";
 
     height: 1px;
 
-    background: var(--border);
+    flex: 1;
+
+    background: #444;
 }
 
-/* FORM */
 
-label {
-    display: block;
+.social {
 
-    font-size: 13px;
-    font-weight: 600;
+    display: flex;
 
-    margin-bottom: 7px;
+    gap: 12px;
 }
 
-.input-group {
-    margin-bottom: 17px;
-}
 
-.input-wrapper {
-    position: relative;
-}
+.social button {
 
-input {
-    width: 100%;
+    flex: 1;
 
-    height: 46px;
+    height: 43px;
 
-    padding: 0 44px 0 13px;
+    border-radius: 9px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid #444;
 
-    border-radius: 10px;
+    background:
+        rgba(255,255,255,.06);
 
-    background: var(--input);
-
-    color: var(--text);
-
-    outline: none;
-
-    font-size: 14px;
-}
-
-input:focus {
-    border-color: var(--text);
-}
-
-input::placeholder {
-    color: var(--muted);
-}
-
-.password-toggle {
-    position: absolute;
-
-    right: 12px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border: none;
-
-    background: transparent;
-
-    color: var(--muted);
+    color: white;
 
     cursor: pointer;
-
-    font-size: 16px;
 }
 
-/* OPTIONS */
 
-.login-options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* =====================================================
+   MOBILE
+===================================================== */
 
-    margin-bottom: 20px;
+@media(max-width:800px) {
 
-    font-size: 12px;
-}
+    .lamp {
 
-.remember {
-    display: flex;
-    align-items: center;
-    gap: 7px;
+        left: 18%;
 
-    color: var(--muted);
-}
+        transform:
+            scale(.75);
 
-.remember input {
-    width: auto;
-    height: auto;
-}
-
-.forgot {
-    color: var(--text);
-
-    text-decoration: none;
-}
-
-.forgot:hover {
-    text-decoration: underline;
-}
-
-/* LOGIN BUTTON */
-
-.login-button {
-    width: 100%;
-
-    height: 47px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: var(--accent);
-    color: var(--bg);
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.login-button:hover {
-    opacity: 0.85;
-}
-
-/* SIGN UP */
-
-.signup {
-    text-align: center;
-
-    margin-top: 22px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-}
-
-.signup a {
-    color: var(--text);
-
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-.signup a:hover {
-    text-decoration: underline;
-}
-
-/* FOOTER */
-
-.footer {
-    position: fixed;
-
-    bottom: 18px;
-
-    left: 0;
-    right: 0;
-
-    text-align: center;
-
-    color: var(--muted);
-
-    font-size: 11px;
-}
-
-/* MOBILE */
-
-@media (max-width: 500px) {
-
-    .login-container {
-        padding: 18px;
+        transform-origin:
+            top left;
     }
+
 
     .login-card {
-        padding: 28px 22px;
-    }
 
-    .topbar {
-        padding: 0 16px;
+        right: 4%;
+
+        width: 350px;
     }
 }
+
+
+@media(max-width:600px) {
+
+    .lamp {
+
+        left: 50%;
+
+        top: 4%;
+
+        transform:
+            translateX(-50%)
+            scale(.55);
+
+        transform-origin:
+            top center;
+    }
+
+
+    .login-card {
+
+        right: auto;
+
+        left: 50%;
+
+        width:
+            calc(100% - 30px);
+
+        max-width: 380px;
+
+        padding: 25px;
+
+        transform:
+
+            translate(-50%, -40%)
+            translateY(80px)
+            scale(.9);
+    }
+
+
+    .room.login-visible
+    .login-card {
+
+        transform:
+
+            translate(-50%, -50%)
+            translateY(0)
+            scale(1);
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- TOP BAR -->
 
-<div class="topbar">
+<div
+    class="room"
+    id="room">
 
-    <div class="brand">
 
-        <div class="logo">
-            G
+    <!-- =================================================
+         LAMP
+    ================================================== -->
+
+    <div class="lamp">
+
+
+        <div class="shade"></div>
+
+
+        <div class="bulb"></div>
+
+
+        <div class="light-cone"></div>
+
+
+        <div class="stand"></div>
+
+
+        <div class="base"></div>
+
+
+        <!-- ROPE -->
+
+        <div
+            class="rope-area"
+            id="ropeArea">
+
+
+            <div
+                class="rope"
+                id="rope">
+            </div>
+
+
+            <button
+                class="rope-handle"
+                id="ropeHandle">
+            </button>
+
+
         </div>
 
-        <span>
-            Garona AI
-        </span>
 
     </div>
 
-    <button
-        class="theme-button"
-        onclick="toggleTheme()"
-        id="themeButton">
-
-        🌙
-
-    </button>
-
-</div>
 
 
-<!-- LOGIN -->
+    <!-- =================================================
+         LOGIN
+    ================================================== -->
 
-<div class="login-container">
-
-    <div class="login-card">
-
-        <div class="login-header">
-
-            <div class="big-logo">
-                G
-            </div>
-
-            <h1>
-                Welcome to Garona AI
-            </h1>
-
-            <p>
-                Your personal AI tutor for learning.
-            </p>
-
-        </div>
+    <div
+        class="login-card"
+        id="loginCard">
 
 
-        <!-- GOOGLE -->
+        <h1>
+            Welcome Back
+        </h1>
+
+
+        <p class="subtitle">
+            Enter your details to access your account
+        </p>
+
+
+        <input
+            class="input"
+            type="text"
+            placeholder="Username">
+
+
+        <input
+            class="input"
+            type="email"
+            placeholder="Email Address">
+
+
+        <input
+            class="input"
+            type="password"
+            placeholder="Password">
+
 
         <button
-            class="social-button"
-            onclick="socialLogin('Google')">
-
-            <span class="social-icon">
-                G
-            </span>
-
-            Continue with Google
-
-        </button>
-
-
-        <!-- FACEBOOK -->
-
-        <button
-            class="social-button"
-            onclick="socialLogin('Facebook')">
-
-            <span class="social-icon">
-                f
-            </span>
-
-            Continue with Facebook
-
-        </button>
-
-
-        <!-- DIVIDER -->
-
-        <div class="divider">
-            OR
-        </div>
-
-
-        <!-- EMAIL -->
-
-        <div class="input-group">
-
-            <label for="email">
-                Email
-            </label>
-
-            <input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                autocomplete="email">
-
-        </div>
-
-
-        <!-- PASSWORD -->
-
-        <div class="input-group">
-
-            <label for="password">
-                Password
-            </label>
-
-            <div class="input-wrapper">
-
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password">
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    onclick="togglePassword()"
-                    id="passwordButton">
-
-                    👁
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- OPTIONS -->
-
-        <div class="login-options">
-
-            <label class="remember">
-
-                <input
-                    type="checkbox"
-                    id="remember">
-
-                Remember me
-
-            </label>
-
-
-            <a
-                href="#"
-                class="forgot"
-                onclick="forgotPassword()">
-
-                Forgot password?
-
-            </a>
-
-        </div>
-
-
-        <!-- LOGIN -->
-
-        <button
-            class="login-button"
+            class="sign-in"
             onclick="login()">
 
-            Login
+            Sign In
 
         </button>
 
 
-        <!-- SIGN UP -->
+        <div class="or">
+            OR CONTINUE WITH
+        </div>
 
-        <div class="signup">
 
-            Don't have an account?
+        <div class="social">
 
-            <a
-                href="#"
-                onclick="signup()">
+            <button
+                onclick="socialLogin('Google')">
 
-                Create account
+                🔵 Google
 
-            </a>
+            </button>
+
+
+            <button
+                onclick="socialLogin('GitHub')">
+
+                ● GitHub
+
+            </button>
 
         </div>
 
+
     </div>
 
+
 </div>
 
-
-<div class="footer">
-    © 2026 Garona AI
-</div>
 
 
 <script>
 
-/* =========================
-   LOGIN
-========================= */
 
-function login() {
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-    const email =
-        document.getElementById("email").value.trim();
+const room =
+    document.getElementById("room");
 
-    const password =
-        document.getElementById("password").value.trim();
+const rope =
+    document.getElementById("rope");
+
+const handle =
+    document.getElementById("ropeHandle");
 
 
-    if (!email) {
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-        alert("Please enter your email.");
+let dragging = false;
 
-        return;
+let startY = 0;
+
+let pullDistance = 0;
+
+let activated = false;
+
+
+/* =====================================================
+   START PULL
+===================================================== */
+
+handle.addEventListener(
+    "pointerdown",
+    function(e) {
+
+        if (activated)
+            return;
+
+
+        dragging = true;
+
+        startY =
+            e.clientY;
+
+        handle.setPointerCapture(
+            e.pointerId
+        );
 
     }
+);
 
 
-    if (!password) {
+/* =====================================================
+   DRAG ROPE
+===================================================== */
 
-        alert("Please enter your password.");
+window.addEventListener(
+    "pointermove",
+    function(e) {
 
-        return;
+        if (
+            !dragging ||
+            activated
+        )
+            return;
+
+
+        pullDistance =
+            e.clientY - startY;
+
+
+        if (
+            pullDistance < 0
+        )
+            pullDistance = 0;
+
+
+        if (
+            pullDistance > 70
+        )
+            pullDistance = 70;
+
+
+        /*
+           Stretch rope
+        */
+
+        rope.style.height =
+            (70 + pullDistance)
+            + "px";
+
+
+        /*
+           Move handle
+        */
+
+        handle.style.transform =
+            "translateY(" +
+            pullDistance +
+            "px)";
+
+
+        /*
+           Trigger after
+           sufficient pull
+        */
+
+        if (
+            pullDistance >= 45
+        ) {
+
+            activateLamp();
+
+        }
 
     }
+);
+
+
+/* =====================================================
+   RELEASE
+===================================================== */
+
+window.addEventListener(
+    "pointerup",
+    function() {
+
+        if (
+            !dragging ||
+            activated
+        )
+            return;
+
+
+        dragging = false;
+
+
+        rope.style.transition =
+            "height .35s ease";
+
+
+        handle.style.transition =
+            "transform .35s ease";
+
+
+        rope.style.height =
+            "70px";
+
+
+        handle.style.transform =
+            "translateY(0)";
+
+
+        setTimeout(
+            () => {
+
+                rope.style.transition =
+                    "";
+
+                handle.style.transition =
+                    "";
+
+            },
+            400
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ACTIVATE LAMP
+===================================================== */
+
+function activateLamp() {
+
+    if (activated)
+        return;
+
+
+    activated = true;
+
+    dragging = false;
 
 
     /*
-       TEMPORARY LOGIN
-
-       This currently sends the user
-       directly to Garona AI.
-
-       Real authentication will be
-       connected later.
+       Lamp turns ON
     */
 
-    window.location.href = "/chat";
+    room.classList.add(
+        "light-on"
+    );
+
+
+    /*
+       Login appears
+       AFTER lamp lights
+    */
+
+    setTimeout(
+        function() {
+
+            room.classList.add(
+                "login-visible"
+            );
+
+        },
+        650
+    );
+
+
+    /*
+       Return rope
+    */
+
+    rope.style.transition =
+        "height .4s ease";
+
+
+    handle.style.transition =
+        "transform .4s ease";
+
+
+    rope.style.height =
+        "70px";
+
+
+    handle.style.transform =
+        "translateY(0)";
 
 }
 
 
-/* =========================
-   GOOGLE / FACEBOOK
-========================= */
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login() {
+
+    alert(
+        "Connect your Garona AI authentication here."
+    );
+
+    /*
+       If your existing backend uses:
+
+       window.location.href = "/chat";
+
+       you can put it here.
+    */
+
+}
+
+
+/* =====================================================
+   SOCIAL LOGIN
+===================================================== */
 
 function socialLogin(provider) {
 
@@ -680,112 +1122,6 @@ function socialLogin(provider) {
         provider +
         " login will be connected later."
     );
-
-}
-
-
-/* =========================
-   SIGN UP
-========================= */
-
-function signup() {
-
-    alert(
-        "Account creation will be added soon."
-    );
-
-}
-
-
-/* =========================
-   FORGOT PASSWORD
-========================= */
-
-function forgotPassword() {
-
-    alert(
-        "Password recovery will be added soon."
-    );
-
-}
-
-
-/* =========================
-   PASSWORD
-========================= */
-
-function togglePassword() {
-
-    const password =
-        document.getElementById("password");
-
-    const button =
-        document.getElementById("passwordButton");
-
-
-    if (password.type === "password") {
-
-        password.type = "text";
-
-        button.textContent = "🙈";
-
-    }
-
-    else {
-
-        password.type = "password";
-
-        button.textContent = "👁";
-
-    }
-
-}
-
-
-/* =========================
-   THEME
-========================= */
-
-function toggleTheme() {
-
-    document.body.classList.toggle("dark");
-
-
-    const dark =
-        document.body.classList.contains("dark");
-
-
-    localStorage.setItem(
-        "garonaLoginTheme",
-        dark ? "dark" : "light"
-    );
-
-
-    document.getElementById(
-        "themeButton"
-    ).textContent =
-        dark ? "☀️" : "🌙";
-
-}
-
-
-/* =========================
-   LOAD THEME
-========================= */
-
-const savedTheme =
-    localStorage.getItem(
-        "garonaLoginTheme"
-    );
-
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-    document.getElementById(
-        "themeButton"
-    ).textContent = "☀️";
 
 }
 

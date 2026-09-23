@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session
+from flask_cors import CORS
 from tutor import ask_garona
 
 app = Flask(__name__)
+CORS(app)
 
 # Secret key for sessions
 app.secret_key = "garona-ai-secret-key-change-this"
